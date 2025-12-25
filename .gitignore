@@ -1,0 +1,52 @@
+# --- PI CONTROLLER SPECIFIC ---
+# Virtual Environments
+pi-controller/.venv/
+pi-controller/venv/
+pi-controller/env/
+
+# Python Bytecode & Cache
+pi-controller/__pycache__/
+pi-controller/*.py[cod]
+pi-controller/*.so
+
+# Project Specific Ignored Files
+pi-controller/commands.txt
+
+#Certificates
+pi-controller/opi.tail5cc970.ts.net.crt
+pi-controller/opi.tail5cc970.ts.net.key
+
+# --- MOBILE APP SPECIFIC ---
+# Dependencies
+mobile-app/node_modules/
+
+# Expo & Web
+mobile-app/.expo/
+mobile-app/dist/
+mobile-app/web-build/
+mobile-app/expo-env.d.ts
+
+# Native & Generated Folders
+mobile-app/ios/
+mobile-app/android/
+mobile-app/app-example/
+mobile-app/.kotlin/
+
+# Keys and Provisioning
+mobile-app/*.jks
+mobile-app/*.p8
+mobile-app/*.p12
+mobile-app/*.key
+mobile-app/*.mobileprovision
+
+# Metro & Debug
+mobile-app/.metro-health-check*
+mobile-app/npm-debug.*
+mobile-app/yarn-debug.*
+mobile-app/yarn-error.*
+
+# VSCode Settings
+mobile-app/.vscode/settings.json
+mobile-app/.vscode/extensions.json
+
+**/.DS_Store
