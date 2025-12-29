@@ -23,7 +23,7 @@
       "package": "com.owillborn.SurfCam"
     },
     "web": {
-      "output": "static",
+      "output": "static"
     },
     "plugins": [
       "expo-router",

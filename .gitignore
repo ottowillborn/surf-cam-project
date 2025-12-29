@@ -51,3 +51,5 @@ mobile-app/.vscode/extensions.json
 
 **/.DS_Store
 mobile-app/release-instructions.txt
+pi-controller/opi-1.tail5cc970.ts.net.crt
+pi-controller/opi-1.tail5cc970.ts.net.key
