@@ -2,7 +2,7 @@
   "expo": {
     "name": "SurfCam",
     "slug": "SurfCam",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "orientation": "landscape",
     "scheme": "surfcam",
     "userInterfaceStyle": "automatic",
