@@ -53,3 +53,4 @@ mobile-app/.vscode/extensions.json
 mobile-app/release-instructions.txt
 pi-controller/opi-1.tail5cc970.ts.net.crt
 pi-controller/opi-1.tail5cc970.ts.net.key
+pi-controller/battery_state.txt
