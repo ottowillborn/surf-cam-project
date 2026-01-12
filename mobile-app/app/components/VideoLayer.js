@@ -15,7 +15,6 @@ export default function VideoLayer({ isStreaming, loading, STREAM_URL }) {
                 maxWidth: '100%',
                 maxHeight: '100%',
                 objectFit: 'cover',
-                transform: 'rotate(180deg)',
                 display: 'block'
               }}
             />
