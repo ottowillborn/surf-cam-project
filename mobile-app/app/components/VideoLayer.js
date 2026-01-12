@@ -33,7 +33,7 @@ export default function VideoLayer({ isStreaming, loading, STREAM_URL }) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
                     <style>
                       body { margin: 0; background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: auto; }
-                      img { max-width: 100%; max-height: 100%; object-fit: contain; transform: rotate(180deg); }
+                      img { max-width: 100%; max-height: 100%; object-fit: contain; }
                     </style>
                   </head>
                   <body><img src="${STREAM_URL}" /></body>
