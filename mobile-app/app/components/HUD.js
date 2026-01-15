@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 import styles from '../styles';
 import ShutterButton from './ShutterButton';
 import appJson from '../../app.json';
 
 export default function HUD({ stats, isStreaming, onToggle }) {
+  const router = useRouter();
   const version = appJson?.expo?.version ?? appJson?.version ?? '?';
   
   // Extract battery data with defaults to prevent crashes if stats aren't loaded yet
@@ -25,16 +27,20 @@ export default function HUD({ stats, isStreaming, onToggle }) {
           <Text style={styles.liveText}>{isStreaming ? 'LIVE' : 'STANDBY'}</Text>
         </View>
 
-        {/* --- New Battery Monitor Section --- */}
-        <View style={styles.statsRow}>
-           <Text style={[styles.statLink, { color: getBatteryColor(battery.percentage) }]}>
+        {/* Battery Monitor Section */}
+        <TouchableOpacity 
+          style={styles.statsRow}
+          onPress={() => router.push('/BatteryModal')}
+          activeOpacity={0.7}
+        >
+          <Text style={[styles.statLink, { color: getBatteryColor(battery.percentage) }]}>
             {battery.percentage}%
           </Text>
           <Text style={[styles.statLink, { color: battery.status === 'Charging' ? '#00FF00' : '#FF3B30' }]}>
             {battery.status === 'Charging' ? '▲' : '▼'} {Math.abs(battery.current).toFixed(2)}A
           </Text>
           <Text style={styles.statLink}>{battery.voltage}V</Text>
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.statsRow}>
           <Text style={styles.statLink}>CPU {stats.cpu_usage}%</Text>

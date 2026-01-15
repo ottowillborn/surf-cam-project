@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, StatusBar, Alert } from 'react-native';
+import { View, StatusBar, Alert, TouchableOpacity, Text } from 'react-native';
+import { useRouter } from 'expo-router';
 import VideoLayer from './components/VideoLayer';
 import HUD from './components/HUD';
 import styles from './styles';
@@ -8,6 +9,8 @@ export default function App() {
   const PI_IP = 'opi-1.tail5cc970.ts.net';
   const STREAM_URL = `https://${PI_IP}:5000/video_feed`;
   const CONTROL_URL = `https://${PI_IP}:5001`;
+
+  const router = useRouter();
 
   const [isStreaming, setIsStreaming] = useState(false);
   const [loading, setLoading] = useState(false);
