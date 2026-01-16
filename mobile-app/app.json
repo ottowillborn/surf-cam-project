@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SurfCam",
-    "slug": "SurfCam",
+    "slug": "SurfCamExpoApp",
     "version": "1.0.0",
     "orientation": "landscape",
     "scheme": "surfcam",
@@ -48,6 +48,7 @@
       "eas": {
         "projectId": "f4f64479-c0dc-48f2-83eb-04490d1aae6f"
       }
-    }
+    },
+    "owner": "owillborn"
   }
 }
