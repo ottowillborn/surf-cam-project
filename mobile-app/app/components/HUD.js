@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-// Removed useRouter since we are no longer navigating pages
 import styles from '../styles';
 import ShutterButton from './ShutterButton';
 import appJson from '../../app.json';
 
-export default function HUD({ stats, isStreaming, onToggle, onOpenHistory }) {
+export default function HUD({ stats, isStreaming, onToggle, onOpenBatteryData }) {
   const version = appJson?.expo?.version ?? appJson?.version ?? '?';
   
   // Extract battery data with defaults to prevent crashes
@@ -25,11 +24,10 @@ export default function HUD({ stats, isStreaming, onToggle, onOpenHistory }) {
           <Text style={styles.liveText}>{isStreaming ? 'LIVE' : 'STANDBY'}</Text>
         </View>
 
-        {/* Updated Battery Monitor Section */}
+        
         <TouchableOpacity 
           style={styles.statsRow}
-          // Changed from router.push to the prop function
-          onPress={onOpenHistory} 
+          onPress={onOpenBatteryData} 
           activeOpacity={0.7}
         >
           <Text style={[styles.statLink, { color: getBatteryColor(battery.percentage) }]}>

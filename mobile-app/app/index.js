@@ -66,7 +66,7 @@ export default function App() {
         stats={stats} 
         isStreaming={isStreaming} 
         onToggle={toggleStream} 
-        onOpenHistory={() => setModalVisible(true)} 
+        onOpenBatteryData={() => setModalVisible(true)} 
       />
 
       <BatteryModal 

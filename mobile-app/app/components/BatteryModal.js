@@ -16,6 +16,7 @@ const chartConfig = (color) => ({
 });
 
 export default function BatteryModal({ visible, onClose, controlUrl }) {
+  //Date State
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [historyData, setHistoryData] = useState(null);
   const [loading, setLoading] = useState(false);
