@@ -16,3 +16,11 @@
 - **CocoaPods:** `sudo gem install cocoapods` (or `brew install cocoapods`) — used in `mobile-app/ios`.
 - **Python 3.8+:** For the `pi-controller` code running on Raspberry Pi or local tests.
 
+**Running Developement Server**
+ - `npx expo start`
+
+ **Tailscale Certs** 
+ - Can become outdated, update on pi using `sudo tailscale cert pi_ts_address.ts.net`
+ - Update permissions of new cert and key `sudo chown pi:pi ~/surf-cam/pi_ts_address.ts.net.*`
+ - `chmod 644 ~/surf-cam/pi_ts_address.ts.net.crt` and `chmod 600 ~/surf-cam/pi_ts_address.ts.net.key`
+ - Then copy to local device so app can access endpoints

@@ -1,18 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
+// Removed useRouter since we are no longer navigating pages
 import styles from '../styles';
 import ShutterButton from './ShutterButton';
 import appJson from '../../app.json';
 
-export default function HUD({ stats, isStreaming, onToggle }) {
-  const router = useRouter();
+export default function HUD({ stats, isStreaming, onToggle, onOpenHistory }) {
   const version = appJson?.expo?.version ?? appJson?.version ?? '?';
   
-  // Extract battery data with defaults to prevent crashes if stats aren't loaded yet
+  // Extract battery data with defaults to prevent crashes
   const battery = stats?.battery || { percentage: 0, voltage: 0, current: 0, status: 'Unknown' };
   
-  // Helper for color coding the battery percentage
   const getBatteryColor = (percent) => {
     if (percent > 50) return '#00FF00'; // Green
     if (percent > 20) return '#FFCC00'; // Orange/Yellow
@@ -27,10 +25,11 @@ export default function HUD({ stats, isStreaming, onToggle }) {
           <Text style={styles.liveText}>{isStreaming ? 'LIVE' : 'STANDBY'}</Text>
         </View>
 
-        {/* Battery Monitor Section */}
+        {/* Updated Battery Monitor Section */}
         <TouchableOpacity 
           style={styles.statsRow}
-          onPress={() => router.push('/BatteryModal')}
+          // Changed from router.push to the prop function
+          onPress={onOpenHistory} 
           activeOpacity={0.7}
         >
           <Text style={[styles.statLink, { color: getBatteryColor(battery.percentage) }]}>
