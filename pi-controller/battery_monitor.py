@@ -8,8 +8,8 @@ from smbus2 import SMBus
 I2C_ADDRESS = 0x40
 SHUNT_OHMS = 0.1 
 BATTERY_CAPACITY_AH = 8.0 
-STATE_FILE = "/home/ottowillborn/surf-cam/battery_state.txt"
-DB_PATH = "/home/ottowillborn/surf-cam/battery_history.db"
+STATE_FILE = "/home/ottowillborn/surf-cam-backend/pi-controller/battery_state.txt"
+DB_PATH = "/home/ottowillborn/surf-cam-backend/pi-controller/battery_history.db"
 
 class BatteryMonitor:
     def __init__(self, bus_num, addr):
