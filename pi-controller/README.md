@@ -112,11 +112,34 @@ Starts `camera_server.py` as a subprocess. No-ops if already running.
 Sends `SIGINT` to the camera subprocess for a graceful shutdown. No-ops if not running.
 
 ---
+## Development Workflow
+# 1. Initialize the directory
+```git init```
+
+# 2. Link it to your GitHub/GitLab repo
+```git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git```
+
+# 3. Enable the sparse-checkout feature
+```git config core.sparseCheckout true```
+
+# 4. Tell Git to only care about the backend folder
+```echo "pi-controller/" >> .git/info/sparse-checkout```
+
+# 5. Pull the code
+```git pull origin main```
+
+Create and activate virtual environment:
+```python3 -m venv .venv```
+```source .venv/bin/activate```
+
+Now install requirements:
+```sudo apt install libcap-dev libcamera-dev```
+```pip install -r requirements.txt```
 
 ## File Structure (on pi)
 
 ```
-surf-cam/
+pi-controller/
 ├── battery_monitor.py       # INA219 reader + Coulomb counter
 ├── camera_server.py         # MJPEG stream server (port 5000)
 ├── controller.py            # Telemetry + control API (port 5001)
