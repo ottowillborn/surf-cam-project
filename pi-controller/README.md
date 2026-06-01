@@ -114,19 +114,19 @@ Sends `SIGINT` to the camera subprocess for a graceful shutdown. No-ops if not r
 ---
 ## Development Workflow
 Controller is started automatically on pi startup at ```/etc/systemd/system/surf-controller.service```
-# 1. Initialize the directory
+## 1. Initialize the directory
 ```git init```
 
-# 2. Link it to your GitHub/GitLab repo
+## 2. Link it to your GitHub/GitLab repo
 ```git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git```
 
-# 3. Enable the sparse-checkout feature
+## 3. Enable the sparse-checkout feature
 ```git config core.sparseCheckout true```
 
-# 4. Tell Git to only care about the backend folder
+## 4. Tell Git to only care about the backend folder
 ```echo "pi-controller/" >> .git/info/sparse-checkout```
 
-# 5. Pull the code
+## 5. Pull the code
 ```git pull origin main```
 
 Create and activate virtual environment:
@@ -136,6 +136,9 @@ Create and activate virtual environment:
 Now install requirements:
 ```sudo apt install libcap-dev libcamera-dev```
 ```pip install -r requirements.txt```
+
+Restart the controller service:
+```sudo systemctl restart surf-controller.service```
 
 ## File Structure (on pi)
 
