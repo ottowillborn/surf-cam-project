@@ -17,6 +17,11 @@ battery_monitor = BatteryMonitor(1, I2C_ADDRESS)
 start_time = time.time()
 process = None
 
+#Health check endpoint for controller
+@app.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({"status": "online"}), 200
+
 def get_cpu_temp():
     # Reads the Pi's internal temperature sensor
     temp = os.popen("vcgencmd measure_temp").readline()
