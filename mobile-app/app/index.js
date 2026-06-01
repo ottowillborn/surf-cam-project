@@ -14,6 +14,25 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [stats, setStats] = useState({ temp: '--', cpu_usage: '--', uptime: '--' });
+  const [isOnline, setIsOnline] = useState(false);
+
+  // Heartbeat for controller status
+  const checkConnection = async () => {
+  try {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), 2000); // 2s timeout for ping
+
+    const response = await fetch(`${CONTROL_URL}/ping`, { signal: controller.signal });
+    if (response.ok) {
+      setIsOnline(true);
+    } else {
+      setIsOnline(false);
+    }
+    clearTimeout(id);
+  } catch (e) {
+    setIsOnline(false);
+  }
+};
 
   const fetchDiagnostics = async () => {
     try {
@@ -23,10 +42,18 @@ export default function App() {
     } catch (e) { console.log('Stats failed'); }
   };
 
+  // Set up intervals for diagnostics and connection checks
   useEffect(() => {
     fetchDiagnostics();
-    const interval = setInterval(fetchDiagnostics, 10000);
-    return () => clearInterval(interval);
+    checkConnection();
+
+    const diagInterval = setInterval(fetchDiagnostics, 10000);
+    const pingInterval = setInterval(checkConnection, 3000); 
+
+    return () => {
+      clearInterval(diagInterval);
+      clearInterval(pingInterval);
+    };
   }, []);
 
   const toggleStream = async (command) => {
@@ -60,10 +87,11 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar hidden />
       
-      <VideoLayer isStreaming={isStreaming} loading={loading} STREAM_URL={STREAM_URL} />
+      <VideoLayer isOnline={isOnline} isStreaming={isStreaming} loading={loading} STREAM_URL={STREAM_URL} />
       
       <HUD 
-        stats={stats} 
+        stats={stats}
+        isOnline={isOnline} 
         isStreaming={isStreaming} 
         onToggle={toggleStream} 
         onOpenBatteryData={() => setModalVisible(true)} 

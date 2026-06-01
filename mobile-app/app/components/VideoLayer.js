@@ -3,7 +3,7 @@ import { Platform, View, ActivityIndicator, Text } from 'react-native';
 import { WebView } from 'react-native-webview';
 import styles from '../styles';
 
-export default function VideoLayer({ isStreaming, loading, STREAM_URL }) {
+export default function VideoLayer({ isOnline, isStreaming, loading, STREAM_URL }) {
   const [scale, setScale] = useState(1);
   const [origin, setOrigin] = useState({ x: 50, y: 50 });
 
@@ -25,7 +25,7 @@ export default function VideoLayer({ isStreaming, loading, STREAM_URL }) {
 
   return (
     <View style={styles.videoContainer}>
-      {isStreaming ? (
+      {isOnline && isStreaming ? (
         Platform.OS === 'web' ? (
           <View style={[styles.webVideoContainer, { width: '100%', height: '100%' }]}>
             <div 
@@ -90,8 +90,19 @@ export default function VideoLayer({ isStreaming, loading, STREAM_URL }) {
         )
       ) : (
         <View style={styles.placeholder}>
-          <ActivityIndicator animating={loading} size="large" color="#444" />
-          <Text style={styles.placeholderText}>{loading ? 'ESTABLISHING HANDSHAKE...' : 'NO SIGNAL'}</Text>
+          {!isOnline ? (
+            <>
+              <ActivityIndicator size="large" color="#ff4444" />
+              <Text style={[styles.placeholderText, { color: '#ff4444' }]}>SYSTEM OFFLINE</Text>
+            </>
+          ) : (
+            <>
+              <ActivityIndicator animating={loading} size="large" color="#444" />
+              <Text style={styles.placeholderText}>
+                {loading ? 'ESTABLISHING HANDSHAKE...' : 'READY TO STREAM'}
+              </Text>
+            </>
+          )}
         </View>
       )}
     </View>

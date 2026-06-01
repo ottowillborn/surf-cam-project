@@ -4,7 +4,7 @@ import styles from '../styles';
 import ShutterButton from './ShutterButton';
 import appJson from '../../app.json';
 
-export default function HUD({ stats, isStreaming, onToggle, onOpenBatteryData }) {
+export default function HUD({ stats, isStreaming, isOnline, onToggle, onOpenBatteryData }) {
   const version = appJson?.expo?.version ?? appJson?.version ?? '?';
   
   // Extract battery data with defaults to prevent crashes
@@ -52,7 +52,9 @@ export default function HUD({ stats, isStreaming, onToggle, onOpenBatteryData })
           <Text style={styles.uptime}>SYS_UP: {stats.uptime}</Text>
           <Text style={styles.uptime}>v{version}</Text>
         </View>
-        <ShutterButton isStreaming={isStreaming} onToggle={onToggle} />
+        {isOnline ? (
+          <ShutterButton isStreaming={isStreaming} onToggle={onToggle} />
+        ) : null}
       </View>
     </View>
   );
