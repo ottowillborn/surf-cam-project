@@ -113,7 +113,7 @@ Sends `SIGINT` to the camera subprocess for a graceful shutdown. No-ops if not r
 
 ---
 
-## File Structure
+## File Structure (on pi)
 
 ```
 surf-cam/
