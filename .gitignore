@@ -6,6 +6,7 @@ pi-controller/env/
 
 # Python Bytecode & Cache
 pi-controller/__pycache__/
+pi-controller/tests/__pycache__/
 pi-controller/*.py[cod]
 pi-controller/*.so
 

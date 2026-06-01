@@ -1,0 +1,6 @@
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.1
+Flask==3.1.2
+flask-cors==6.0.2
+psutil>=7.2.1
