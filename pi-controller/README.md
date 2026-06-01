@@ -113,6 +113,7 @@ Sends `SIGINT` to the camera subprocess for a graceful shutdown. No-ops if not r
 
 ---
 ## Development Workflow
+Controller is started automatically on pi startup at ```/etc/systemd/system/surf-controller.service```
 # 1. Initialize the directory
 ```git init```
 

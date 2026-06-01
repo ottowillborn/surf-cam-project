@@ -8,7 +8,7 @@ from flask_cors import CORS
 from battery_monitor import BatteryMonitor, I2C_ADDRESS
 import sqlite3
 
-DB_PATH = "/home/ottowillborn/surf-cam/battery_history.db"
+DB_PATH = "/home/ottowillborn/surf-cam-backend/pi-controller/battery_history.db"
 app = Flask(__name__)
 CORS(app) # This enables CORS for all routes
 
@@ -84,7 +84,7 @@ def start_stream():
     global process
     if process is None or process.poll() is not None:
         # Start the camera script as a separate process
-        process = subprocess.Popen(["/home/ottowillborn/surf-cam/.venv/bin/python3", "/home/ottowillborn/surf-cam/camera_server.py"])
+        process = subprocess.Popen(["/home/ottowillborn/surf-cam-backend/pi-controller/.venv/bin/python3", "/home/ottowillborn/surf-cam-backend/pi-controller/camera_server.py"])
         return "Stream started", 200
     return "Stream already running", 200
 
